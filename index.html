@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Miftahul Jannah</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI;
+        }
+
+
+        body {
+            background: radial-gradient(circle at top, #0f172a, #020617);
+            color: white;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: #00c6ff33;
+            filter: blur(120px);
+            z-index: -1;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav button:hover {
+            color: #00c6ff;
+            transform: scale(1.1);
+        }
+
+        /* SECTION */
+        .section {
+            display: none;
+            padding: 40px 20px;
+            animation: fade 0.6s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* CARD */
+        .card {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* PROFILE IMAGE */
+        img.profile {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #00c6ff;
+            object-fit: cover;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            background: #00c6ff;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 15px #00c6ff;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* BOX */
+        .box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .box:hover {
+            transform: translateY(-6px);
+            background: rgba(0, 198, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 198, 255, 0.25);
+        }
+
+        /* IMAGE */
+        .box img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: 0.4s;
+        }
+
+        .box:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+
+        /* SOSMED */
+        .social {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social a {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: #00c6ff;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background: #00c6ff;
+            color: black;
+        }
+
+        /* IG PREVIEW */
+        .ig-preview {
+            margin-top: 20px;
+        }
+
+        .ig-preview img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+        }
+
+        /* BACKGROUND ANIMATION */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #00c6ff22, transparent 60%);
+            animation: moveBg 12s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveBg {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-20%, -20%);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* SMOOTH SECTION TRANSITION */
+        .section {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+            z-index: 1;
+        }
+
+        /* STAGGER ANIMATION */
+        .card * {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section.active .card * {
+            animation: fadeUp 0.6s forwards;
+        }
+
+        .section.active .card *:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section.active .card *:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section.active .card *:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section.active .card *:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section.slide-left {
+            transform: translateX(-60px);
+            opacity: 0;
+        }
+
+        .section.slide-right {
+            transform: translateX(60px);
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 3D HOVER EFFECT */
+        .box {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .box:hover {
+            transform: rotateX(6deg) rotateY(-6deg) scale(1.05);
+        }
+
+        /* GLOW EFFECT */
+        .box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 15px;
+            background: linear-gradient(120deg, transparent, #00c6ff55, transparent);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .box:hover::before {
+            opacity: 1;
+        }
+
+        /* BUTTON GLOW ANIMATION */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, white, transparent);
+            top: 0;
+            left: -100%;
+            transition: 0.5s;
+        }
+
+        /* ANIMASI SKILL */
+        .skill-bar {
+            background: #ffffff22;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 10px;
+            width: 0;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* animasi bounce smooth */
+        .skill-fill.animate {
+            animation: fillBounce 1.6s cubic-bezier(0.68, -0.6, 0.32, 1.6) forwards;
+        }
+
+        /* efek kilau jalan */
+        .skill-fill::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent, #ffffff88, transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes fillBounce {
+            0% {
+                width: 0;
+            }
+
+            60% {
+                width: calc(var(--target) + 8%);
+            }
+
+            80% {
+                width: calc(var(--target) - 4%);
+            }
+
+            100% {
+                width: var(--target);
+            }
+        }
+
+        @keyframes shine {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        /* efek glow */
+        .skill-fill::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent, #ffffff88, transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        /* PROFILE GLOW */
+        .profile {
+            box-shadow: 0 0 20px #00c6ff;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        /* WAJIB */
+        .nav-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+        }
+
+        /* tombol nav */
+        .nav-btn {
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        /* garis bawah */
+        .nav-indicator {
+            position: absolute;
+            bottom: 5px;
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            border-radius: 10px;
+            transition: all 0.4s ease;
+        }
+
+        /* efek aktif */
+        .nav-btn.active {
+            color: #00c6ff;
+        }
+
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0%
+            }
+
+            50% {
+                background-position: 100%
+            }
+
+            100% {
+                background-position: 0%
+            }
+        }
+
+        /* ===== TYPING EFFECT ===== */
+        .typing {
+            border-right: 2px solid #00c6ff;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* ===== FLOATING ICON BACKGROUND ===== */
+        .floating-icons span {
+            position: fixed;
+            bottom: -50px;
+            font-size: 20px;
+            animation: floatUp 10s linear infinite;
+            opacity: 0.2;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* ===== BUTTON UPGRADE ===== */
+        .btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 0 20px #00c6ff, 0 0 40px #00c6ff44;
+        }
+
+        /* ===== CARD HOVER PREMIUM ===== */
+        .card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 0 40px rgba(0, 198, 255, 0.2);
+        }
+
+        /* ===== ANIMASI SEMUA TEKS ===== */
+        .card h1,
+        .card h2,
+        .card h3,
+        .card p,
+        .card a,
+        .card button,
+        .card span {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* saat aktif */
+        .section.active .card h1,
+        .section.active .card h2,
+        .section.active .card h3,
+        .section.active .card p,
+        .section.active .card a,
+        .section.active .card button,
+        .section.active .card span {
+            animation: textUp 0.6s forwards;
+        }
+
+        /* delay biar berurutan */
+        .section.active .card *:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section.active .card *:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section.active .card *:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section.active .card *:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section.active .card *:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section.active .card *:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section.active .card *:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section.active .card *:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes textUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* efek tulisan saat hover */
+        .card h1:hover,
+        .card h2:hover,
+        .card h3:hover {
+            transform: scale(1.05);
+            color: #00c6ff;
+            transition: 0.3s;
+        }
+
+        /* paragraf subtle animasi */
+        .card p:hover {
+            transform: translateX(5px);
+            transition: 0.3s;
+        }
+
+        /* efek glow halus */
+        .card h1,
+        .card h2 {
+            animation: glowText 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowText {
+            from {
+                text-shadow: 0 0 5px #00c6ff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #00c6ff, 0 0 40px #00c6ff44;
+            }
+        }
+
+        /* ===== FIX ANIMASI TEKS ===== */
+        .section.active .card * {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: textSmooth 0.6s forwards;
+        }
+
+        /* delay berurutan */
+        .section.active .card *:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section.active .card *:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section.active .card *:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section.active .card *:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section.active .card *:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section.active .card *:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section.active .card *:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section.active .card *:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes textSmooth {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== ULTRA PREMIUM CARD ===== */
+        .card {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(0, 198, 255, 0.15);
+        }
+
+        /* ===== SECTION TRANSITION (APPLE STYLE) ===== */
+        .section {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(60px) scale(0.97);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            z-index: 1;
+        }
+
+        /* ===== TEXT ANIMATION CLEAN ===== */
+        .card * {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.active .card * {
+            animation: smoothFade 0.8s forwards;
+        }
+
+        /* stagger delay */
+        .section.active .card *:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section.active .card *:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section.active .card *:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section.active .card *:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section.active .card *:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section.active .card *:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes smoothFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PREMIUM TEXT ===== */
+        h1 {
+            font-size: 38px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        /* ===== BUTTON UPGRADE ===== */
+        .btn {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            border-radius: 12px;
+            padding: 12px 18px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 198, 255, 0.4);
+        }
+
+        /* ===== NAV CLEAN ===== */
+        nav {
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* ===== BOX (PROJECT / SKILL) ===== */
+        .box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 198, 255, 0.2);
+        }
+
+        /* ===== TEXT REVEAL EFFECT ===== */
+        .reveal {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            transform: translateX(-100%);
+            animation: revealAnim 1s forwards;
+        }
+
+        @keyframes revealAnim {
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(3);
+                opacity: 0;
+            }
+        }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #020617;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-size: 30px;
+            animation: fadeOut 1s ease 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+
+<div id="loader">
+    <h1>Welcome to My Portofolio...</h1>
+</div>
+
+<body>
+    <div class="floating-icons">
+        <span style="left:10%">💻</span>
+        <span style="left:30%">🚀</span>
+        <span style="left:50%">🌐</span>
+        <span style="left:70%">✨</span>
+        <span style="left:90%">⚡</span>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+        <button class="nav-btn" onclick="goTo(0)">Home</button>
+        <button class="nav-btn" onclick="goTo(1)">Biodata</button>
+        <button class="nav-btn" onclick="goTo(2)">Pendidikan</button>
+        <button class="nav-btn" onclick="goTo(3)">Project</button>
+        <button class="nav-btn" onclick="goTo(4)">Kontak</button>
+
+        <!-- garis bawah -->
+        <div class="nav-indicator"></div>
+    </nav>
+
+    <!-- HOME -->
+    <div id="home" class="section active">
+        <div class="card">
+
+            <img class="profile" src="mimip.jpeg">
+
+            <h1 class="gradient-text">Miftahul Jannah</h1>
+
+            <p class="typing" id="typingText"></p>
+
+            <button class="btn" onclick="nextSection()">
+                📄 Lihat Profil Lengkap
+            </button>
+
+        </div>
+    </div>
+
+    <!-- BIODATA -->
+    <div id="bio" class="section">
+        <div class="card">
+
+            <img class="profile" src="mimip2.jpeg">
+
+            <h2 style="margin-top:15px;">👨‍💻 Tentang Saya</h2>
+
+            <p style="opacity:0.8; line-height:1.7; margin-top:10px;">
+                Saya Miftahul Jannah seorang mahasiswa Teknik Informatika Semester 4 di UNIVERSITAS JABAL GHAFUR yang
+                memiliki ketertarikan kuat pada pengembangan web modern,
+                khususnya dalam membangun website yang responsif, interaktif, dan memiliki desain yang profesional.
+
+                Dalam proses belajar, saya terbiasa mengasah kemampuan secara mandiri melalui berbagai proyek nyata,
+                baik untuk latihan maupun pengembangan skill. Bagi saya, coding bukan sekadar menulis baris program,
+                tetapi tentang merancang solusi digital yang efektif, bermanfaat, dan mampu memberikan pengalaman
+                terbaik bagi pengguna.Tujuan saya adalah terus berkembang di dunia teknologi dan berkontribusi dalam
+                menciptakan produk digital yang bermanfaat serta memiliki pengalaman pengguna yang baik, terutama
+                melalui kesempatan magang di lingkungan profesional.
+
+                Saya memiliki semangat untuk terus berkembang di dunia teknologi serta siap beradaptasi dalam lingkungan
+                kerja profesional. Melalui kesempatan magang, saya berharap dapat berkontribusi dalam tim, sekaligus
+                meningkatkan kemampuan saya dalam menciptakan produk digital yang berkualitas dan berdampak.Saya percaya
+                bahwa kombinasi antara kreativitas dan logika dapat menciptakan solusi digital
+                yang inovatif dan bermanfaat di era modern.
+                <span style="color:#00c6ff;">pemrograman</span>,
+                <span style="color:#00c6ff;">web development</span>, dan
+                <span style="color:#00c6ff;">problem solving</span>.
+            </p> <br> <br>
+
+            <p>
+            <h2 style="margin-top:15px;">📱 Kontak</h2> <br>
+            <bold>📧 Email: miftahuljannah2006asia@email.com <br>
+                📷 Instagram: @mifthjn_ <br>
+                💬 WhatsApp: +62 822-4998-2278</bold>
+            </p>
+
+
+            <!-- SKILL SECTION -->
+            <div style="margin-top:25px; text-align:left;">
+                <h3 style="margin-bottom:10px;">🚀 Skills</h3>
+
+                <div style="margin-bottom:10px;">
+                    <p>HTML</p>
+                    <div style="background:#ffffff22; border-radius:10px;">
+                        <div style="width:70%; background:#00c6ff; padding:5px; border-radius:10px;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:10px;">
+                    <p>CSS</p>
+                    <div style="background:#ffffff22; border-radius:10px;">
+                        <div style="width:65%; background:#00c6ff; padding:5px; border-radius:10px;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:10px;">
+                    <p>JavaScript</p>
+                    <div style="background:#ffffff22; border-radius:10px;">
+                        <div style="width:50%; background:#00c6ff; padding:5px; border-radius:10px;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- QUOTE -->
+            <p style="margin-top:20px; font-style:italic; opacity:0.6;">
+                “Building skills today for a better digital future.”
+            </p>
+
+            <div style="margin-top:20px;">
+                <button class="btn" onclick="prevSection()">⬅ Sebelumnya</button>
+                <button class="btn" onclick="nextSection()">Selanjutnya ➡</button>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- PENDIDIKAN -->
+    <div id="edu" class="section">
+        <div class="card">
+
+            <h2>📚 Pendidikan</h2>
+
+            <div class="grid">
+
+                <div class="box">
+                    <img src="Min 9 pidie.jpg">
+                    <h3>MIN 9 Pidie</h3>
+                    <p>2012 - 2018</p>
+                    <a class="btn"
+                        href="https://sekolah.data.kemendikdasmen.go.id/profil-sekolah/578B7338-DD08-45D3-97A1-ED2C3EDCC1E1"
+                        target="_blank">Website</a>
+                </div>
+
+                <div class="box">
+                    <img src="mtsn 5 pidie.jpg">
+                    <h3>MTsN 5 Pidie</h3>
+                    <p>2018 - 2021</p>
+                    <a class="btn" href=https://mtsn5pidie.sch.id/" target="_blank">Website</a>
+                </div>
+
+                <div class="box">
+                    <img src="man 1 pidie.png">
+                    <h3>MAN 1 Pidie</h3>
+                    <p>2021 - 2024</p>
+                    <a class="btn" href="https://mansatupidie.sch.id/" target="_blank">Website</a>
+                </div>
+
+                <div class="box">
+                    <img src="unigha3.jpg">
+                    <h3>Universitas Jabal Ghafur</h3>
+                    <p>2024 - Sekarang </p>
+                    <a class="btn" href="https://www.unigha.ac.id/" target="_blank">Website</a>
+                </div>
+
+            </div>
+
+            <div style="margin-top:20px;">
+                <button class="btn" onclick="prevSection()">⬅ Sebelumnya</button>
+                <button class="btn" onclick="nextSection()">Selanjutnya ➡</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PROJECT -->
+    <div id="project" class="section">
+        <div class="card">
+
+            <h2>💻 Project Unggulan</h2>
+
+            <div class="grid">
+
+                <div class="box">
+                    <h3>Portfolio Website</h3>
+                    <p>Membangun website pribadi dengan desain modern, animasi interaktif, dan tampilan responsif untuk
+                        berbagai perangkat. </p>
+                    <a class="btn" href="https://github.com" target="_blank">Lihat</a>
+                </div>
+
+                <div class="box">
+                    <h3>Toko Online</h3>
+                    <p>Merancang tampilan e-commerce dengan layout clean, card modern, dan struktur user-friendly. </p>
+                    <a class="btn" href="https://miftahuljannah2006asia-png.github.io/miffy-jawelry/"
+                        target="_blank">Lihat</a>
+                </div>
+
+                <div class="box">
+                    <h3>Landing Page</h3>
+                    <p>Project ini masih dalam proses pembuatan, di mana setiap detailnya sedang dirancang dan
+                        dikembangkan secara bertahap untuk menghasilkan produk yang lebih matang dan optimal.</p>
+                    <a class="btn" href="https://github.com" target="_blank">Lihat</a>
+                </div>
+
+            </div>
+            <div style="margin-top:20px;">
+                <button class="btn" onclick="prevSection()">⬅ Sebelumnya</button>
+                <button class="btn" onclick="nextSection()">Selanjutnya ➡</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="section">
+        <div class="card">
+
+            <h2>📱 Kontak & Sosial Media</h2>
+            <p style="opacity:0.7; margin-bottom:15px;">
+                Silakan menghubungi saya melalui platform berikut. Saya terbuka untuk berbagai kesempatan—mulai dari
+                kolaborasi, pengembangan proyek, hingga diskusi seputar teknologi dan web development, maupun komunikasi
+                dalam keperluan sehari-hari.
+            </p>
+
+            <div class="grid">
+
+
+                <!-- INSTAGRAM -->
+                <div class="box">
+                    <h3>📸 Instagram</h3>
+                    <p style="font-size:14px; opacity:0.7;">
+                        Disini tempat saya berbagi aktivitas dan keseharian. Saat ini akun saya masih bersifat privat,
+                        sehingga
+                        hanya dapat diakses oleh orang yang sudah saling mengikuti. Jika tertarik dan berkenan, silakan
+                        ikuti akun Instagram saya melalui ikon di bawah untuk saling terhubung.
+                    </p>
+                    <a class="btn" href="#" target="_blank">Kunjungi</a>
+                </div>
+
+                <!-- WHATSAPP -->
+                <div class="box">
+                    <h3>💬 WhatsApp</h3>
+                    <p style="font-size:14px; opacity:0.7;">
+                        Silakan hubungi saya langsung melalui WhatsApp untuk diskusi cepat, kolaborasi, maupun
+                        pertanyaan seputar proyek.
+                    </p>
+                    <a class="btn" href="https://wa.me/6282249982278" target="_blank">
+                        Chat Sekarang
+                    </a>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="box">
+                    <h3>📧 Email</h3>
+                    <p style="font-size:14px; opacity:0.7;">
+                        Silakan menghubungi saya melalui email untuk kebutuhan formal seperti kerja sama bisnis,
+                        penawaran proyek, maupun komunikasi profesional lainnya. Saya terbuka untuk berbagai peluang
+                        kolaborasi yang dapat dikembangkan menjadi kerja sama yang produktif, saling menguntungkan, dan
+                        berkelanjutan.
+                    </p>
+                    <a class="btn" href="mailto:miftahuljannah2006asia@gmail.com">
+                        Kirim Email
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- INSTAGRAM PREVIEW -->
+            <div class="ig-preview">
+
+                <div class="ig-card">
+                    <img src="akun1.jpeg">
+                    <div class="ig-overlay">
+                        <h4>📸 FIRST AKUN</h4>
+                        <p>Silakan ikuti akun ini, dan jika relevan akan saya follow back. <br> Terima kasih sudah
+                            terhubung di sini.</p> <br> <br>
+                    </div>
+                </div>
+
+                <div class="ig-card">
+                    <img src="akun2.jpeg">
+                    <div class="ig-overlay">
+                        <h4>🎨 SECOND AKUN</h4>
+                        <p>Akun second ini saya gunakan sebagai ruang pribadi untuk berbagi hal-hal random, <br> dari
+                            keseharian sampai hal yang saya pikirkan. <br> Tidak semua orang bisa masuk di sini <br>
+                            karena
+                            akun
+                            ini hanya saya khususkan <br>untuk orang-orang tertentu yang sudah saling follow.</p>
+                    </div>
+                </div>
+                <div style="margin-top:20px;">
+                    <button class="btn" onclick="prevSection()">⬅ Sebelumnya</button>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script>
+
+        window.onload = () => {
+            showSection(0);
+        };
+        const sections = ["home", "bio", "edu", "project", "contact"];
+        let current = 0;
+
+        function showSection(index) {
+            document.querySelectorAll('.section').forEach(s => {
+                s.classList.remove('active');
+
+                // 🔥 reset animasi biar jalan lagi
+                s.querySelectorAll('.card *').forEach(el => {
+                    el.style.animation = "none";
+                    el.offsetHeight; // trigger reflow
+                    el.style.animation = null;
+                });
+            });
+            current = index;
+
+            setTimeout(() => {
+                document.getElementById(sections[current]).classList.add('active');
+
+                // 🔥 WAJIB: update garis bawah
+                updateIndicator(current);
+
+                if (sections[current] === 'bio') {
+                    setTimeout(animateSkills, 300);
+                }
+            }, 150);
+        }
+
+        function nextSection() {
+            if (current < sections.length - 1) {
+                current++;
+                showSection(current);
+            }
+        }
+
+        function prevSection() {
+            if (current > 0) {
+                current--;
+                showSection(current);
+            }
+        }
+        document.querySelectorAll('.box').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                let rect = card.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+                let rotateX = -(y - rect.height / 2) / 10;
+                let rotateY = (x - rect.width / 2) / 10;
+
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0) rotateY(0) scale(1)`;
+            });
+        });
+
+        function animateSkills() {
+            document.querySelectorAll('.skill-fill').forEach(bar => {
+                bar.classList.remove('animate');
+
+                // reset dulu biar bisa diulang
+                bar.style.width = "0";
+
+                setTimeout(() => {
+                    bar.classList.add('animate');
+                }, 100);
+            });
+        }
+
+        function updateIndicator(index) {
+            const buttons = document.querySelectorAll('.nav-btn');
+            const indicator = document.querySelector('.nav-indicator');
+
+            const activeBtn = buttons[index];
+
+            indicator.style.width = activeBtn.offsetWidth + "px";
+            indicator.style.left = activeBtn.offsetLeft + "px";
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            activeBtn.classList.add('active');
+        }
+        /* ===== TYPING EFFECT ===== */
+        const text = "Mahasiswa Teknik Informatika | UNIVERSITAS JABAL GHAFUR";
+        let i = 0;
+
+        function typingEffect() {
+            if (i < text.length) {
+                document.getElementById("typingText").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typingEffect, 40);
+            }
+        }
+
+        window.onload = () => {
+            showSection(0);
+            typingEffect();
+        };
+
+        /* ===== RANDOM FLOAT DELAY ===== */
+        document.querySelectorAll('.floating-icons span').forEach(el => {
+            el.style.animationDuration = (6 + Math.random() * 6) + "s";
+            el.style.fontSize = (15 + Math.random() * 20) + "px";
+        });
+
+        /* ===== PARALLAX BACKGROUND ===== */
+        document.addEventListener("mousemove", (e) => {
+            let x = (e.clientX / window.innerWidth - 0.5) * 20;
+            let y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+            document.body.style.backgroundPosition = `${50 + x}% ${50 + y}%`;
+        });
+
+        /* ===== RIPPLE EFFECT ===== */
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                let ripple = document.createElement("span");
+                ripple.style.position = "absolute";
+                ripple.style.width = ripple.style.height = "100px";
+                ripple.style.background = "rgba(255,255,255,0.5)";
+                ripple.style.borderRadius = "50%";
+                ripple.style.left = e.offsetX + "px";
+                ripple.style.top = e.offsetY + "px";
+                ripple.style.transform = "translate(-50%,-50%) scale(0)";
+                ripple.style.animation = "ripple 0.6s linear";
+
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
