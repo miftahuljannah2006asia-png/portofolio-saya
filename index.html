@@ -7,6 +7,11 @@
     <title>Portfolio Miftahul Jannah</title>
 
     <style>
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -828,6 +833,83 @@
                 visibility: hidden;
             }
         }
+
+        /* ===== MOBILE OPTIMIZATION ===== */
+        @media (max-width: 768px) {
+
+            /* body padding biar nggak nempel */
+            body {
+                padding: 10px;
+            }
+
+            /* NAV jadi scroll horizontal */
+            nav {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 10px;
+            }
+
+            nav button {
+                flex: 0 0 auto;
+                font-size: 13px;
+            }
+
+            /* CARD lebih kecil */
+            .card {
+                padding: 20px;
+                border-radius: 18px;
+            }
+
+            /* TEXT */
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            /* PROFILE */
+            img.profile {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* GRID jadi 1 kolom */
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* BOX */
+            .box {
+                padding: 12px;
+            }
+
+            .box img {
+                height: 120px;
+            }
+
+            /* BUTTON */
+            .btn {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+
+            /* SECTION biar nggak tabrakan */
+            .section {
+                position: relative;
+            }
+
+            /* IG PREVIEW */
+            .ig-preview img {
+                max-width: 100%;
+            }
+
+        }
     </style>
 </head>
 
@@ -911,33 +993,6 @@
             </p>
 
 
-            <!-- SKILL SECTION -->
-            <div style="margin-top:25px; text-align:left;">
-                <h3 style="margin-bottom:10px;">🚀 Skills</h3>
-
-                <div style="margin-bottom:10px;">
-                    <p>HTML</p>
-                    <div style="background:#ffffff22; border-radius:10px;">
-                        <div style="width:70%; background:#00c6ff; padding:5px; border-radius:10px;"></div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom:10px;">
-                    <p>CSS</p>
-                    <div style="background:#ffffff22; border-radius:10px;">
-                        <div style="width:65%; background:#00c6ff; padding:5px; border-radius:10px;"></div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom:10px;">
-                    <p>JavaScript</p>
-                    <div style="background:#ffffff22; border-radius:10px;">
-                        <div style="width:50%; background:#00c6ff; padding:5px; border-radius:10px;"></div>
-                    </div>
-                </div>
-
-            </div>
-
             <!-- QUOTE -->
             <p style="margin-top:20px; font-style:italic; opacity:0.6;">
                 “Building skills today for a better digital future.”
@@ -975,7 +1030,7 @@
                     <img src="mtsn 5 pidie.jpg">
                     <h3>MTsN 5 Pidie</h3>
                     <p>2018 - 2021</p>
-                    <a class="btn" href=https://mtsn5pidie.sch.id/" target="_blank">Website</a>
+                    <a class="btn" href="https://mtsn5pidie.sch.id/" target="_blank">Website</a>
                 </div>
 
                 <div class="box">
@@ -989,7 +1044,8 @@
                     <img src="unigha3.jpg">
                     <h3>Universitas Jabal Ghafur</h3>
                     <p>2024 - Sekarang </p>
-                    <a class="btn" href="https://www.unigha.ac.id/" target="_blank">Website</a>
+                    <a class="btn" href="https://id.wikipedia.org/wiki/Universitas_Jabal_Ghafur/"
+                        target="_blank">Website</a>
                 </div>
 
             </div>
@@ -1014,7 +1070,7 @@
                     <h3>Portfolio Website</h3>
                     <p>Membangun website pribadi dengan desain modern, animasi interaktif, dan tampilan responsif untuk
                         berbagai perangkat. </p>
-                    <a class="btn" href="https://miftahuljannah2006asia-png.github.io/portofolio-saya/"
+                    <a class="btn" href="https://miftahuljannah2006asia-png.github.io/my-portopolio/"
                         target="_blank">Lihat</a>
                 </div>
 
@@ -1026,10 +1082,11 @@
                 </div>
 
                 <div class="box">
-                    <h3>Landing Page</h3>
-                    <p>Project ini masih dalam proses pembuatan, di mana setiap detailnya sedang dirancang dan
-                        dikembangkan secara bertahap untuk menghasilkan produk yang lebih matang dan optimal.</p>
-                    <a class="btn" href="https://github.com" target="_blank">Lihat</a>
+                    <h3>Edukasi website</h3>
+                    <p>Platform edukasi interaktif untuk mempelajari berbagai mata pelajaran, mata kuliah, dan menguji
+                        kemampuanmu melalui quiz yang menarik.</p>
+                    <a class="btn" href="https://miftahuljannah2006asia-png.github.io/Miffy-Smartlearn/"
+                        target="_blank">Lihat</a>
                 </div>
 
             </div>
@@ -1047,7 +1104,7 @@
 
             <h2>📱 Kontak & Sosial Media</h2>
             <p style="opacity:0.7; margin-bottom:15px;">
-                Silakan menghubungi saya melalui platform berikut. Saya terbuka untuk berbagai kesempatan—mulai dari
+                Silakan menghubungi saya melalui platform berikut. Saya terbuka untuk berbagai kesempatan mulai dari
                 kolaborasi, pengembangan proyek, hingga diskusi seputar teknologi dan web development, maupun komunikasi
                 dalam keperluan sehari-hari.
             </p>
@@ -1102,7 +1159,7 @@
                     <img src="akun1.jpeg">
                     <div class="ig-overlay">
                         <h4>📸 FIRST AKUN</h4>
-                        <p>Silakan ikuti akun ini, dan jika relevan akan saya follow back. <br> Terima kasih sudah
+                        <p>Silakan ikuti akun ini, dan jika relevan akan saya follback. <br> Terima kasih sudah
                             terhubung di sini.</p> <br> <br>
                     </div>
                 </div>
@@ -1112,10 +1169,8 @@
                     <div class="ig-overlay">
                         <h4>🎨 SECOND AKUN</h4>
                         <p>Akun second ini saya gunakan sebagai ruang pribadi untuk berbagi hal-hal random, <br> dari
-                            keseharian sampai hal yang saya pikirkan. <br> Tidak semua orang bisa masuk di sini <br>
-                            karena
-                            akun
-                            ini hanya saya khususkan <br>untuk orang-orang tertentu yang sudah saling follow.</p>
+                            keseharian sampai hal yang saya pikirkan. <br> Akun
+                            ini hanya saya khususkan <br>untuk orang-orang yang sudah saling follow.</p>
                     </div>
                 </div>
                 <div style="margin-top:20px;">
