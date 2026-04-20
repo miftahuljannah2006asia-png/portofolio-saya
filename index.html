@@ -1078,6 +1078,65 @@
                 max-width: 1000px;
             }
         }
+
+        /* ===== TEXT BERJALAN PREMIUM ===== */
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 25px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        /* efek fade kiri kanan biar smooth */
+        .marquee-container::before,
+        .marquee-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(to right, #020617, transparent);
+        }
+
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(to left, #020617, transparent);
+        }
+
+        .marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding: 12px 0;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 4px;
+
+            /* gradient text */
+            background: linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: marqueeMove 12s linear infinite;
+        }
+
+        /* animasi jalan halus */
+        @keyframes marqueeMove {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 
@@ -1115,7 +1174,12 @@
 
             <h1 class="gradient-text">Miftahul Jannah</h1>
 
-            <p class="typing" id="typingText"></p>
+            <div class="marquee-container">
+                <div class="marquee-text">
+                    Mahasiswa Teknik Informatika <BR>
+                    UNIVERSITAS JABAL GHAFUR
+                </div>
+            </div>
 
             <button class="btn" onclick="nextSection()">
                 📄 Lihat Profil Lengkap
@@ -1409,9 +1473,6 @@
             buttons.forEach(btn => btn.classList.remove('active'));
             activeBtn.classList.add('active');
         }
-        /* ===== TYPING EFFECT ===== */
-        const text = "Mahasiswa Teknik Informatika | UNIVERSITAS JABAL GHAFUR";
-        let i = 0;
 
         function typingEffect() {
             if (i < text.length) {
