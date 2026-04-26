@@ -543,12 +543,18 @@
         /* garis bawah */
         .nav-indicator {
             position: absolute;
-            bottom: 5px;
+            bottom: 0;
             height: 3px;
-            width: 60px;
+            width: 0;
             background: linear-gradient(90deg, #00c6ff, #0072ff);
             border-radius: 10px;
             transition: all 0.4s ease;
+            z-index: 10;
+            /* 🔥 biar gak ketutup */
+        }
+
+        nav {
+            overflow: visible;
         }
 
         /* efek aktif */
@@ -1196,10 +1202,6 @@
             font-weight: 600;
             letter-spacing: 4px;
 
-            /* gradient text */
-            background: linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
 
             animation: marqueeMove 12s linear infinite;
         }
@@ -1574,8 +1576,10 @@
 
             const activeBtn = buttons[index];
 
-            indicator.style.width = activeBtn.offsetWidth + "px";
-            indicator.style.left = activeBtn.offsetLeft + "px";
+            setTimeout(() => {
+                indicator.style.width = activeBtn.offsetWidth + "px";
+                indicator.style.left = activeBtn.offsetLeft + "px";
+            }, 50);
 
             buttons.forEach(btn => btn.classList.remove('active'));
             activeBtn.classList.add('active');
